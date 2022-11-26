@@ -159,6 +159,22 @@ public:
         }
     }
 
+    void reverseLinkedList()
+    {
+        linkedList *current = head;
+        linkedList *prev = NULL;
+        linkedList *next = NULL;
+        while (current != NULL)
+        {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+
+        head = prev;
+    }
+
     void nthNodefromBeginning(int k)
     {
         if (head == NULL)
@@ -232,6 +248,19 @@ public:
         }
     }
 
+    void swapLastElement()
+    {
+        linkedList *current = head;
+        while (current->next->next != NULL)
+        {
+            current = current->next;
+        }
+        linkedList *tmp = current->next;
+        current->next = NULL;
+        tmp->next = head;
+        head = tmp;
+    }
+
     void printll()
     {
         if (head == NULL)
@@ -273,9 +302,14 @@ int main()
     // ll.printll();
     // ll.deleteAtParticularNode(2);
     // ll.printll();
-    ll.searchElement(10);
-    ll.nthNodefromBeginning(2);
-    ll.nthNodeFromEnd(3);
-    ll.midddleElement();
+    // ll.searchElement(10);
+    // ll.nthNodefromBeginning(2);
+    // ll.nthNodeFromEnd(3);
+    // ll.midddleElement();
+    // ll.reverseLinkedList();
+    // cout << "The Reverse Linked list is:- \n";
+    // ll.printll();
+    ll.swapLastElement();
+    ll.printll();
     return 0;
 }
